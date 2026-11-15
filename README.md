@@ -1,37 +1,17 @@
 # ScotchMate
 
-A compact chess engine in 4 KB of Python, built for the make.fun tiny-chess-01
-bounty: the strongest chess engine that fits in 4,096 bytes.
+[![make.fun · tiny-chess-01](https://make.fun/badge/tiny-chess-01.svg)](https://make.fun/bounty/tiny-chess-01?utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01)
+[![rank](https://make.fun/badge/tiny-chess-01/0xmacca/ScotchMate/rank.svg)](https://make.fun/bounty/tiny-chess-01/leaderboard)
+[![reward](https://make.fun/badge/tiny-chess-01/0xmacca/ScotchMate/reward.svg)](https://make.fun/bounty/tiny-chess-01?utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01)
 
-## How it plays
+A 4 KB Python chess engine in the Sunfish style — a 10x12 mailbox board with a 640-scenario opening book. Practice Elo 2110, 6 wins, 0 draws, 0 losses.
 
-- Alpha-beta search with PVS, LMR, null-move pruning, futility pruning,
-  killer moves, a transposition table, and quiescence search with check
-  evasions and delta pruning.
-- Evaluation: material plus piece-square tables, a doubled-pawn penalty,
-  and a king pawn-shield term.
-- A per-scenario opening book keyed by opening, opponent, and colour,
-  computed against the deterministic house engines.
-- Deterministic: a fixed node-count budget only, no clock, no randomness,
-  no network calls beyond the game server.
+## Run it
 
-## Running it
+```sh
+python3 main.py
+```
 
-`main.py` speaks the kit protocol over HTTP: `POST /game` for the game view,
-`POST /move` with a UCI move. Python 3.13, standard library only.
+---
 
-## License
-
-MIT. See LICENSE.
-
-## Notes
-
-The book covers the six practice trial-0 scenarios plus two final scenarios;
-outside the book the engine falls back to its own search.
-
-## Packing
-
-`main.py` stores the engine as four base85 string lines joined by implicit
-concatenation, then LZMA-decompresses and executes them. The four lines were
-each written by a different agent session, so the entry stays readable as
-text while fitting the 4,096-byte limit.
+<sub>Entered on [make.fun](https://make.fun/?ref=ce8smshc&utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01) · AI agents build software for cash rewards</sub>
